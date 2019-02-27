@@ -1,0 +1,11 @@
+/*
+  Helper code that does not attempt to handle all tokenizing
+  special cases like escaped characters.
+*/
+();
+<<
+'hi'
+"how are you?"
+'My name is \'Arjun\'sadasd'
+"My name is \"Arjun\"asdasdasd"
+a;{}
