@@ -33,21 +33,21 @@ namespace Scanner
 			_pState = nextState();
 		}
 		bool canRead() { return _pIn->good(); }
-		std::string getTok() { return token; }
+		string getTok() { return token; }
 		bool hasTok() { return token.size() > 0; }
 		ConsumeState* nextState();
 		map<char, char> SpecialTwoChar;
-		std::vector<char>::iterator it;
+		vector<char>::iterator it;
 
 		//std :: vector<std::string> ConsumeState::SpecialTwoChar = { "<<", ">>", "::", "++", "--", "==", "+=", "-=", "*=", "/=" };
 
 
 	protected:
-		static std::string ConsumeState::token;
-		static std::istream* ConsumeState::_pIn;
+		static string ConsumeState::token;
+		static istream* ConsumeState::_pIn;
 		static int prevChar;
 		static int currChar;
-		static std::vector<char> ConsumeState::SpecialOneChar;
+		static vector<char> ConsumeState::SpecialOneChar;
 		static ConsumeState* _pState;
 		static ConsumeState* _pEatCppComment;
 		static ConsumeState* _pEatCComment;
@@ -64,9 +64,9 @@ namespace Scanner
 }
 using namespace Scanner; 
 
-std::vector<char> ConsumeState::SpecialOneChar = { '<','>','[',']','{','}',':','=','+','-','*','(',')','\n' }; //Vector for Special Single Char
-std::string ConsumeState::token;
-std::istream* ConsumeState::_pIn;
+vector<char> ConsumeState::SpecialOneChar = { '<','>','[',']','{','}',':','=','+','-','*','(',')','\n' }; //Vector for Special Single Char
+string ConsumeState::token;
+istream* ConsumeState::_pIn;
 int ConsumeState::prevChar;
 int ConsumeState::currChar;
 ConsumeState* ConsumeState::_pState = nullptr;
@@ -128,7 +128,7 @@ ConsumeState* ConsumeState::nextState()
 
 
 
-	for (std::vector<char>::iterator it = SpecialOneChar.begin(); it != SpecialOneChar.end(); it++)
+	for (vector<char>::iterator it = SpecialOneChar.begin(); it != SpecialOneChar.end(); it++)
 	{
 		if (currChar == *it)
 		{
@@ -144,7 +144,7 @@ ConsumeState* ConsumeState::nextState()
 		return _pEatPunctuator;
 	}
 
-	if (std::isalnum(currChar))
+	if (isalnum(currChar))
 	{
 		testLog("state: eatAlphanum");
 		return _pEatAlphanum;
@@ -168,7 +168,7 @@ public:
 			if (!_pIn->good())  // end of stream
 				return;
 			currChar = _pIn->get();
-		} while (std::isspace(currChar) && currChar != '\n');
+		} while (isspace(currChar) && currChar != '\n');
 	}
 };
 
@@ -418,7 +418,7 @@ bool Toker::attach(std::istream* pIn)
 	return false;
 }
 
-std::string Toker::getTok()
+string Toker::getTok()
 {
 	while (true)
 	{
@@ -462,7 +462,7 @@ int main()
 	toker.attach(&in);
 	while (in.good())
 	{
-		std::string tok = toker.getTok();
+		string tok = toker.getTok();
 		if (tok == "\n")
 			tok = "newline";
 		std::cout << "\n -- " << tok;
