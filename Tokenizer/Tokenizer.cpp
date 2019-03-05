@@ -38,8 +38,7 @@ namespace Scanner
 		ConsumeState* nextState();
 		map<char, char> SpecialTwoChar;
 		vector<char>::iterator it;
-
-		//std :: vector<std::string> ConsumeState::SpecialTwoChar = { "<<", ">>", "::", "++", "--", "==", "+=", "-=", "*=", "/=" };
+		std :: vector<std::string> ConsumeState::SpecialTwoChar = { "<<", ">>", "::", "++", "--", "==", "+=", "-=", "*=", "/=" };
 
 
 	protected:
