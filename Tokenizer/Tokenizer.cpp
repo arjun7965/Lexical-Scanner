@@ -228,8 +228,7 @@ public:
 				return;
 			currChar = _pIn->get();
 
-		} while (currChar != '\'');
-		//currChar = _pIn->get();	
+		} while (currChar != '\'');	
 		if (currChar = '\'')
 			currChar = _pIn->get();
 	}
@@ -243,7 +242,6 @@ public:
 	{
 		token.clear();
 		currChar = _pIn->get();
-		//token = currChar;
 		//std::cout << "\n  eating Single";
 		do {
 			if (currChar == '\\')
@@ -253,7 +251,6 @@ public:
 				return;
 			currChar = _pIn->get();
 		} while (currChar != '"');
-		//currChar = _pIn->get();
 		if (currChar = '"')
 			currChar = _pIn->get();
 	}
@@ -447,9 +444,9 @@ void testLog(const std::string& msg)
 
 int main()
 {
-	//std::string fileSpec = "../Tokenizer/Tokenizer.cpp";
+	std::string fileSpec = "../Tokenizer/Tokenizer.cpp";
 	//std::string fileSpec = "../Tokenizer/Tokenizer.h";
-	std::string fileSpec = "./Tokenizer/Test.txt";
+	//std::string fileSpec = "./Tokenizer/Test.txt";
 
 	std::ifstream in(fileSpec);
 	if (!in.good())
